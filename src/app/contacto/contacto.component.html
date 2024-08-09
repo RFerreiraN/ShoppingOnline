@@ -1,0 +1,57 @@
+<section class="contacto-flex">
+   
+<aside class="asideMessage">
+    <h1>Contact us!!</h1>
+    <p>How we can help you?</p>
+    <img src="assets/img/website-content-sections.png" alt="contact">
+</aside>
+
+<div class="formContact">
+
+    <div class="headLogoForm">
+        <img src="assets/img/9Sbxdg-LogoMakr.png" alt="logo" width="40%">
+    </div>
+    <div class="paragrahfContact">
+        <p>Contact Support</p>
+    </div>
+    <form #contactForm = "ngForm" (ngSubmit)="onClick()" class="form">
+        <p>
+            <label for="fullName"><strong>Full Name:</strong></label><br>
+            <input type="text" id="name" placeholder="Name" size="20" required>&nbsp;
+            <input type="text" id="lastName" placeholder="Last Name" required>
+        </p>
+
+        <p>
+            <label for="email"><strong>Email Address:</strong></label><br>
+            <input type="email" class="email" name="email" id="email" placeholder="email@email.com" required>
+        </p>
+
+        <p>
+            <label for="phone"><strong>Phone Number:</strong></label><br>
+            <input type="text" id="phone" placeholder="Phone Number" size="41" required>
+        </p>
+
+        <p>
+            <label for="reason"><strong>Reason for Contact: </strong></label><br>
+            <select id="reason" class="select" required>
+                <option value="" selected disabled hidden></option>
+                <option value="questions">Questions</option>
+                <option value="information">Information</option>
+                <option value="complaint">Complaint</option>
+            </select>
+        </p>
+        <p>
+            <label for="messageArea"><strong>Leave your Message:</strong> </label><br>
+            <textarea id="messageArea" rows="5" cols="55" required></textarea>
+        </p>
+       
+        <div class="bottonContact"> 
+            <button type="submit">Contact Us!!</button>
+        </div>
+            
+        
+    </form> 
+</div>
+
+</section>
+

@@ -1,0 +1,35 @@
+
+<section class="sale">
+     <div class="total">
+          <h4>TOTAL</h4>
+          <app-total></app-total>
+     </div>
+    
+    <div class="cart">
+         <ul>
+              <li *ngFor="let producto of productos; let indice = index">
+                   <!-- <div class="imageCart">
+                        <img src="{{producto.image}}" width="40px">
+                   </div> -->
+                   <div class="titleCart">
+                         <span>{{producto.title}}</span>
+                   </div>
+                   <div class="priceCart">
+                    <span>{{producto.price | currency : 'EUR'}} </span>
+                   </div>
+                   <div class="buttons">
+                         <button class="deleteButton" (click)="deleteProducts(indice , 1)">delete</button>  
+                   </div>
+                   
+              </li>
+         </ul>
+   </div>
+   
+  
+</section>
+
+
+   
+
+
+   

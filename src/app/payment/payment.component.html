@@ -1,0 +1,76 @@
+
+<section class="payment" >
+     <h2>Payment Method's</h2>
+        <div>
+            <p>
+                <input type="checkbox" id="toggleDiv" [(ngModel)]="showPayment">
+                <label for="toggleDiv">Credit or Debit Card</label>
+                <span class="cards">
+                    <i class="fa-brands fa-cc-mastercard"></i>&nbsp;
+                    <i class="fa-brands fa-cc-visa"></i>&nbsp;
+                    <i class="fa-brands fa-cc-amex"></i>
+                </span>
+            </p>
+        </div>
+        <div *ngIf="showPayment">
+            <form #paymentCardForm="ngForm" (ngSubmit)="pay()">
+                <p>
+                    <label for="cardNumber">Card Number: </label><br>
+                    <i class="fa-regular fa-credit-card"></i>&nbsp;
+                        <input type="text" name="card" #card="ngModel" [(ngModel)]="formModel.card" minlength="16" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
+                    
+                    <span *ngIf="card.touched && !card.valid">
+                        Required!!
+                    </span>
+                </p>
+
+                <p>
+                    <label for="expiration">Expiration Date: </label><br>
+                    <i class="fa-solid fa-calendar-days"></i>&nbsp; 
+                        <input type="text" id="month" name="month" #month="ngModel" [(ngModel)]="formModel.month" placeholder="mm" maxlength="2" required>&nbsp;
+                        <input type="text" id="year" name="year" #year="ngModel" [(ngModel)]="formModel.year" placeholder="yy" maxlength="4" required>
+                
+                    <span *ngIf="month.touched && !month.valid">
+                        Required!!
+                    </span>
+                </p>
+
+                <p>
+                    <label for="secCode">Secret Code: </label><br>
+                    <i class="fa-solid fa-lock">&nbsp; 
+                        <input type="text" value="" name="secCode" id="secCode" #secCode="ngModel" [(ngModel)]="formModel.secCode" maxlength="3" placeholder="xxx" required>
+                    </i>
+                    <span *ngIf="secCode.touched && !secCode.valid">
+                        Required!!
+                    </span>
+                </p>
+
+                <p>
+                    <input type="submit" value="Pay now" [disabled]="!paymentCardForm.valid">&nbsp;
+                    <button type="button" value="Back">Back</button>
+                </p>
+            </form>
+        </div>
+
+        <div>
+            <p>
+                <input type="checkbox" id="toggleDiv" [(ngModel)]="giftCardPayment">
+                <label for="toggleDiv">Gift Card</label>
+                <span class="giftCard">
+                    <i class="fa-solid fa-gift"></i>
+                </span>
+
+            </p>
+        </div>
+        <div *ngIf="giftCardPayment">
+            <form #paymentGiftCard = "ngForm" (ngSubmit)="pay()">
+                <label for="giftCode">Gift Card Code:</label>&nbsp;
+                <input type="text" id="giftCode" name="giftCode" #giftCode="ngModel" [(ngModel)]="gidfCard.giftCode" minlength="16" maxlength="20" required>
+            </form>
+        </div>
+
+ 
+</section>
+
+
+

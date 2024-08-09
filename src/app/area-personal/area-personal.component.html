@@ -1,0 +1,182 @@
+<div class="login-flex">
+    <div *ngIf="session; then logIn else logOut" ></div>
+
+    <ng-template #logIn>
+        <!-- <app-session></app-session> -->
+        <div class="personalInformation" >
+            <h1><strong>Wellcome!! {{logInUser.name}} </strong></h1>
+            <h5><strong>Personal Information: </strong></h5>
+ 
+            <form #formPersonal="ngForm" (ngSubmit)="logout()" >
+                <div class="fullNameInputs">
+                    <p>
+                        <label for="name">Name: </label><br>
+                        <input type="text" id="name" name="name" #name="ngModel" [(ngModel)]="personalInformation.name" placeholder="Ricardo" [disabled]="isReadOnly">
+                    </p>
+                    
+                    <p>
+                        <label for="surname">Last Name: </label><br>
+                        <input type="text" id="surname" name="surname" #surname="ngModel" [(ngModel)]="personalInformation.surName" placeholder="Ferreira Nunes" [disabled]="isReadOnly">
+                    </p>
+
+                    <p>
+                        <label for="age">Age:</label><br>
+                        <input type="text" name="age" id="age" #age="ngModel" [(ngModel)]="personalInformation.age" placeholder="40" [disabled]="isReadOnly">
+                    </p>
+                </div>
+                
+                <h5><strong>Address Information: </strong></h5>
+
+                    <div class="inputsAddress">
+                        <p>
+                            <label for="country">Country: </label><br>
+                            <input type="text" id="country" name="country" #country="ngModel" [(ngModel)]="personalInformation.country" placeholder="Spain" [disabled]="isReadOnly">
+                        </p>
+
+                        <p>
+                            <label for="city">City: </label>
+                            <input type="text" id="city" name="city" #city="ngModel" [(ngModel)]="personalInformation.city" placeholder="Madrid" [disabled]="isReadOnly"> 
+                        </p>
+
+                        <p>
+                            <label for="street">Street: </label>
+                            <input type="text" id="street" name="street" #street="ngModel" [(ngModel)]="personalInformation.address" placeholder="Calle Serrano, 110" [disabled]="isReadOnly">
+                        </p>
+                    </div>
+                
+                <h5><strong>Contact Information: </strong></h5>
+
+                    <div class="inputsContact">
+                        <p>
+                            <label for="email">Email: </label><br>
+                            <input type="text" name="email" id="email" #email="ngModel" [(ngModel)]="personalInformation.email" placeholder="email@email.es" [disabled]="isReadOnly">
+                        </p>
+
+                        <p>
+                            <label for="phone">Phone Number: </label><br>
+                            <input type="text" name="phone" id="phone" #phone="ngModel" [(ngModel)]="personalInformation.phoneNumber" placeholder="+34XXXXXXXXX" [disabled]="isReadOnly">
+                        </p>
+                    </div>
+
+                    <div class="buttonLogOut">
+                        <input type="submit" value="LOGOUT">
+                    </div>
+            </form><br><br>
+
+            <div class="edit">
+                <button (click)="edit()"><strong>Edit / Save</strong></button>
+            </div>
+            
+        </div>
+    </ng-template>
+
+    <ng-template #logOut>
+        <aside class="aside1">
+            <div class="logoLogin">
+                <img src="assets/img/9TH6qF-LogoMakr.png" alt="logo">
+            </div>
+    
+            <div class="loginForm">
+                <h3>LOGIN</h3>
+    
+                <form #Formlogin="ngForm" (ngSubmit)="login()">
+                  <div class="loginContent">
+                    <p>
+                        <label for="name"><strong>Name</strong></label><br>
+                        <input type="text" id="name" #name="ngModel" [(ngModel)]="logInUser.name" placeholder="Your Name Here!!"><br>
+                    </p>
+    
+                    <p>
+                        <label for="password"><strong>Password</strong></label><br>
+                        <input [type]="passwordFieldType" id="password" [(ngModel)]="password" name="password" placeholder="********">
+
+                        <button type="button" (click)="togglePasswordVisibilityRegister()"> 
+                        <i [class]="passwordFieldType === 'password' ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                        </button><br>                     
+                    </p>
+    
+                    <p>
+                        <a href="#" class="forgotButton">Forgot Password?</a><br>   
+                    </p>
+                    </div><br>
+                    
+                    <div class="loginBotton">
+                        <hr>
+                    <p> 
+                        <button (click)="login()">LOGIN</button>
+                    </p>
+    
+                    </div>
+                </form> 
+    
+                <div class="terms">
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+
+        </aside> 
+        
+        <!-- Registro de nuevo usuario -->
+        
+        <aside class="aside2">
+            <div class="logoLogin">
+                <img src="assets/img/9TH6qF-LogoMakr.png" alt="logo">
+            </div>
+        
+            <div class="registerForm">
+                <h3>REGISTER</h3>
+
+                <form #registerForm="ngForm" (ngSubmit)="register()">
+                    <div class="formRegister">
+                        <p>
+                            <label for="firstName"><strong>First Name: </strong></label><br>
+                            <input type="text" name="firstName" id="firstName" #firstName="ngModel" [(ngModel)]="registerUser.firstName">
+                        </p>
+    
+                        <p>
+                            <label for="lastName"><strong>Last Name: </strong></label><br>
+                            <input type="text" name="lastName" id="lastName" #lastName="ngModel" [(ngModel)]="registerUser.lastName"> 
+                        </p>
+    
+                        <p>
+                            <label for="email"><strong>Email: </strong></label><br>
+                            <input type="text" name="email" id="email" #email="ngModel" [(ngModel)]="registerUser.email">
+                        </p>
+    
+                        <p>
+                            <label for="password"><strong>Password</strong></label><br>
+                            <input [type]="passwordFieldType" id="password" [(ngModel)]="password" name="password" placeholder="********">
+    
+                            <button type="button" (click)="togglePasswordVisibility()"> 
+                            <i [class]="passwordFieldType === 'password' ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                            </button>
+                        </p>
+    
+                        <div class="registerBotton">
+                            <input type="submit" value="CREATE ACCOUNT">
+                        </div>
+    
+                    </div>
+                </form>
+            </div>
+
+           
+        
+        </aside>
+        
+    </ng-template>
+    
+
+
+  
+
+
+
+
+
+
+
+    
+
+
+</div>

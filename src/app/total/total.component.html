@@ -1,0 +1,140 @@
+<div class="totalCart">
+    <h3>{{total | currency: 'EUR'}}</h3>
+    <button type="button" (click)="hidden()">Pay it</button>
+</div>
+<!-- <div>
+    <app-payment></app-payment>
+</div> -->
+
+<section class="payment" *ngIf="displayPayment">
+    <h2>Payment Method's</h2>
+
+    <!-- Credit o debit card payment -->
+       
+            <div >
+                <p class="cardPayment">
+                    <input type="checkbox" id="toggleDiv" [(ngModel)]="showDisplay">
+                    <label for="toggleDiv">Credit or Debit Card</label>
+                    <span class="cards">
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-amex"></i>
+                    </span>
+                </p>
+            
+                 <div *ngIf="showDisplay" >
+                     <form #paymentCardForm="ngForm" (ngSubmit)="pay(paymentCardForm)">
+                         <p>
+                             <label for="cardNumber">Card Number: </label><br>
+                             <i class="fa-regular fa-credit-card"></i>&nbsp;
+                                 <input type="text" name="card" #card="ngModel" [(ngModel)]="formModel.card" minlength="16" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
+                             
+                             <span class="required" *ngIf="card.touched && !card.valid" >
+                                 Required!!
+                             </span>
+                         </p>
+     
+                         <p>
+                             <label for="expiration">Expiration Date: </label><br>
+                             <i class="fa-solid fa-calendar-days"></i>&nbsp; 
+                                 <input type="text" id="month" name="month" #month="ngModel" [(ngModel)]="formModel.month" placeholder="mm" maxlength="2" required>&nbsp;
+                                 <input type="text" id="year" name="year" #year="ngModel" [(ngModel)]="formModel.year" placeholder="yy" maxlength="4" required>
+                         
+                             <span class="required" *ngIf="month.touched && !month.valid">
+                                 Required!!
+                             </span>
+                         </p>
+     
+                         <p>
+                             <label for="secCode">Secret Code: </label><br>
+                             <i class="fa-solid fa-lock">&nbsp; 
+                                 <input type="text" value="" name="secCode" id="secCode" #secCode="ngModel" [(ngModel)]="formModel.secCode" minlength="3" maxlength="3" placeholder="xxx" required>
+                             </i>
+                             <span class="required" *ngIf="secCode.touched && !secCode.valid">
+                                 Required!!
+                             </span>
+                         </p>
+     
+                         <p>
+                             <input type="submit" value="Pay now" [disabled]="!paymentCardForm.valid">&nbsp;
+                         </p> 
+                     </form>
+                     <strong><h6 class="strong"> Total : {{total | currency: 'EUR'}}</h6></strong> 
+                 </div>
+           </div>
+             <!-- Gift card payment -->
+     
+            <div >
+                <p class="giftCardPayment">
+                    <input type="checkbox" id="toggleDiv" [(ngModel)]="displayGiftCard">
+                    <label for="toggleDiv">Gift Card</label>
+                    <span class="giftCard">
+                        <i class="fa-solid fa-gift"></i>
+                    </span>
+                </p>
+            
+           
+                 <div *ngIf="displayGiftCard">
+                     <form #paymentGiftCard = "ngForm" (ngSubmit)="pay(paymentGiftCard)">
+                         <p>
+                             <label for="giftCode">Gift Card Code:</label>&nbsp;
+                             <input type="text" id="giftCode" name="giftCode" #giftCode="ngModel" [(ngModel)]="giftCard.giftCode" minlength="16" maxlength="20" required>
+                             <span class="required" *ngIf="giftCode.touched && !giftCode.valid">
+                                 Required!!
+                             </span>
+                         </p>
+                         <p>
+                             <input type="submit" value="Aplicate" [disabled]="!paymentGiftCard.valid">
+                         </p>
+                         
+                     </form>
+                     <strong><h6 class="strong"> Total : {{total | currency: 'EUR'}}</h6></strong> 
+                 </div>
+           </div>
+     
+           <!-- transfer payment -->
+     
+           <div>
+               <p class="transferPayment">
+                 <input type="checkbox" id="toggleDiv" [(ngModel)]="displayTransfer">
+                 <label for="toggleDiv">Transfer</label>
+                 <span class="transferPayment">
+                     <i class="fa-solid fa-right-left"></i>
+                 </span>
+               </p>
+     
+               <div *ngIf="displayTransfer">
+                 <form #paymentTransfer="ngForm" (ngSubmit)="pay(paymentTransfer)">
+                     <p>
+                         <label for="source">Source Account: </label>&nbsp;
+                         <input type="text" id="source" name="transfer" #sourceAccount="ngModel" [(ngModel)]="transfer.sourceAccount" minlength="20" maxlength="20" required placeholder="xxxx xxxx xxxx xxxx">
+                         <span class="required" *ngIf="sourceAccount.touched && !sourceAccount.valid">
+                             Required!!
+                         </span> 
+                     </p>   
+                     
+                     <p>
+                         <label for="destiantion">Destination Account: </label>&nbsp;
+                         <input type="text" id="destiantion" name="transfer" #destinationAccount="ngModel" [(ngModel)]="transfer.destinationAccount" minlength="20" maxlength="20" required placeholder="xxxx xxxx xxxx xxxx">
+                         <span class="required" *ngIf="destinationAccount.touched && !destinationAccount.valid">
+                             Required!!
+                         </span>
+                     </p> 
+                     <p>
+                         <input type="submit" value="Transfer" [disabled]="!paymentTransfer.valid">
+                     </p>
+                         
+                 </form>
+                 <strong><h6 class="strong"> Total : {{total | currency: 'EUR'}}</h6></strong> 
+               </div>
+           </div>
+        
+        
+    
+</section>
+
+
+
+
+
+
