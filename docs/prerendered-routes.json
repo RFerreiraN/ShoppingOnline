@@ -1,0 +1,15 @@
+{
+  "routes": [
+    "/",
+    "/area-personal",
+    "/cesta",
+    "/contacto",
+    "/inicio",
+    "/productos",
+    "/productos/category/electronics",
+    "/productos/category/jewerly",
+    "/productos/category/men-clothing",
+    "/productos/category/women-clothing",
+    "/sesion"
+  ]
+}
