@@ -416,13 +416,6 @@ div .image{
     border-radius: 5px;   
 }
 
-/* .register-flex{
-    display: flex;
-    width: 35%;
-    height: 800px;
-    gap: 65px; 
-} */
-
 
 .logoLogin{
     align-items: center;
@@ -447,13 +440,6 @@ div .image{
     font-size: 12px;
 
 }
-/* .loginContent input[type="text"]{
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    color: white;  
-} */
 
 .loginContent input[type="password"]{
     border: none;
