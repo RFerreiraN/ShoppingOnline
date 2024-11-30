@@ -47,7 +47,8 @@
             "prerender": true,
             "ssr": {
               "entry": "server.ts"
-            }
+            },
+            "baseHref": "/ShoppingOnline/"  
           },
           "configurations": {
             "production": {
